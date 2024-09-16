@@ -29,8 +29,10 @@ Deberás resolver los ejercicios propuestos e incluir tus respuestas en los luga
 - Para las funciones, deberás implementar las funciones en el archivo `funciones.js` y luego copiar el texto de tus resultados en `funciones.html` según se indica.
 - Para los componentes web interactivos como el Tooltip y el Formulario, deberás crear los archivos JavaScript que consideres necesarios y cargarlos en `dom.html`. Asi podrás mostrar las Demo de los elementos en el lugar que se indica.
 
-## Fecha de entrega
-
-**La fecha máxima de entrega es domingo a las 23:59:59 EST (media noche)**. Si necesitas tiempo extra comunícate con tu TA.
 
 Happy coding! 🧑‍💻🧑‍💻🧑‍💻
+
+## Fecha de entrega
+
+**Mayo 2024**
+
