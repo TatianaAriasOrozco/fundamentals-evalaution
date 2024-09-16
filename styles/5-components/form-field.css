@@ -1,0 +1,17 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-5);
+}
+
+.form-field p {
+  margin-top: 0;
+}
+
+.form-field-error {
+  font-size: var(--font-sm);
+  color: var(--danger-border);
+  line-height: var(--leading-5);
+  display: none;
+}

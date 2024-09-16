@@ -1,0 +1,43 @@
+.demo__form {
+  width: 100%;
+  padding: var(--spacing-12) var(--spacing-4);
+  background-color: var(--neutral-100);
+  margin-top: var(--spacing-8);
+  border-radius: var(--rounded-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.demo__form-conteiner {
+  width: 330px;
+  background-color: var(--white);
+  border-radius: var(--rounded-lg);
+  padding: var(--spacing-4);
+  gap: var(--spacing-4);
+}
+
+.demo__form pre {
+  width: 100%;
+  display: flex;
+  padding: var(--spacing-4);
+  border-radius: var(--rounded-lg);
+  background-color: var(--white);
+  word-wrap: break-word;
+  white-space: pre-line;
+  color: var(--neutral-900);
+  font-family: var(--text);
+  font-size: var(--font-base);
+  line-height: var(--leading-7);
+  font-weight: 400;
+}
+
+.demo__form pre code {
+  all: unset;
+}
+
+.demo__form pre code::before,
+.demo__form pre code::after {
+  content: unset;
+}

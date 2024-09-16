@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Fundamentals Evaluation - Funciones</title>
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__container">
+        <a href="index.html">
+          <img
+            src="assets/images/codeable-logo-sm.svg"
+            alt="codeable-logo"
+            width="135"
+            height="32"
+            class="header__logo"
+          />
+        </a>
+        <nav class="navigation">
+          <ul>
+            <li><a href="diagramas.html">Diagramas VV</a></li>
+            <li class="active">
+              <a href="funciones.html">Funciones</a>
+            </li>
+            <li><a href="dom.html">Manipulación del DOM</a></li>
+          </ul>
+        </nav>
+        <p class="header__name">Tatiana Arias</p>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="content">
+          <h1>Funciones</h1>
+          <h2>Instrucciones</h2>
+          <p>
+            Completa las funciones del archivo
+            <span>`funciones.js`</span> siguiendo las indicaciones a fin de que
+            los test de la página
+            <a href="test.html" target="_blank" class="link">test.html</a> pasen
+            exitosamente. Deja una copia de tu código en esta página.
+          </p>
+
+          <h2>Función `interactuarCadenas`</h2>
+          <h3>Descripción</h3>
+          <p>
+            Dadas dos cadenas de texto compuestas por los símbolos `+` y `-`, tu
+            tarea es devolver una nueva cadena que muestre cómo interactúan las
+            dos cadenas originales de la siguiente manera:
+          </p>
+          <ul class="list">
+            <li>
+              Cuando un símbolo positivo (`+`) interactúa con otro positivo,
+              permanece positivo.
+            </li>
+            <li>
+              Cuando un símbolo negativo (`-`) interactúa con otro negativo,
+              permanece negativo.
+            </li>
+            <li>
+              Pero cuando un símbolo negativo interactúa con un símbolo
+              positivo, se neutralizan y se muestran como el número `0`.
+            </li>
+          </ul>
+          <h3>Requerimiento</h3>
+          <p>
+            Escribe una función `interactuarCadenas` que toma dos cadenas de
+            igual longitud como argumentos y devuelve una nueva cadena de
+            acuerdo con las reglas de interacción mencionadas.
+          </p>
+          <h3>Ejemplo</h3>
+          <code>
+            <pre>
+const resultado = interactuarCadenas("+-+", "+--");
+console.log(resultado); // Devuelve "+-0"</pre
+            >
+          </code>
+
+          <h3>Respuesta</h3>
+
+          <code>
+            <pre>
+function verificarCaracteres(cadena) {
+  for (let char of cadena) {
+    if (char !== "+" && char !== "-") {
+      throw new Error(
+        "Las cadenas solo deben contener los caracteres '+' y '-'");
+    }
+  }
+}
+
+function interactuarCadenas(cadena1, cadena2) {
+  try {
+    verificarCaracteres(cadena1);
+    verificarCaracteres(cadena2);
+  } catch (error) {
+    throw error;
+  }
+
+  if (cadena1.length !== cadena2.length)
+    throw new Error("Las cadenas deben tener la misma longitud");
+
+  let result = [];
+
+  for (let i = 0; i < cadena1.length; i++) {
+    let c1 = cadena1[i];
+    let c2 = cadena2[i];
+
+    if (c1 === "+" && c2 === "+") {
+      result.push("+");
+    } else if (c1 === "-" && c2 === "-") {
+      result.push("-");
+    } else {
+      result.push("0");
+    }
+  }
+  return result.join("");
+}</pre
+            >
+          </code>
+
+          <h2>Función `generarApodo`</h2>
+          <h3>Descripción</h3>
+          <p>
+            Tu objetivo es escribir una función llamada `generarApodo` que tome
+            un string `nombre` como argumento y devuelva los primeros 3 o 4
+            caracteres como un apodo.
+          </p>
+          <h3>Requerimiento</h3>
+          <p>
+            Si la tercera letra es una consonante, devuelve las primeras 3
+            letras.
+          </p>
+          <code>
+            <pre>
+generarApodo("Roberto") // "Rob"
+generarApodo("Kimberly") // "Kim"
+generarApodo("Samuel") // "Sam"</pre
+            >
+          </code>
+          <p>
+            Si la tercera letra es una vocal, devuelve las primeras 4 letras.
+          </p>
+          <code>
+            <pre>
+generarApodo("Jeannie") // "Jean"
+generarApodo("Douglas") // "Doug"
+generarApodo("Gregory") // "Greg"</pre
+            >
+          </code>
+          <p>
+            Si el string tiene menos de 4 caracteres, lanza un Error con el
+            mensaje "Nombre muy corto".
+          </p>
+          <p>Ten cuenta que:</p>
+          <ul class="list">
+            <li>
+              Las vocales son solo "aeiou", así que no cuentes la letra "y".
+            </li>
+            <li>La argumento de entrada siempre será un string.</li>
+          </ul>
+          <h3>Respuesta</h3>
+          <code>
+            <pre>
+function esVocal(letra) {
+  const vocales = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  return vocales.includes(letra);
+}
+
+function generarApodo(nombre) {
+  if (nombre.length < 4) throw new Error("Nombre muy corto");
+
+  if (/^[A-Za-z]+$/.test(nombre)) {
+    if (esVocal(nombre[2])) {
+      return nombre.slice(0, 4);
+    } else {
+      return nombre.slice(0, 3);
+    }
+  } else {
+    throw new Error("El nombre solo debe contener letras");
+  }
+}</pre
+            >
+          </code>
+
+          <h2>Función `obtenerMarcador`</h2>
+          <h3>Descripción</h3>
+          <p>
+            Trabajas en un estadio de fútbol de ligas menores y has decido
+            implementar un sistema para automatizar el marcador del juego.
+            Tienes un módulo de reconocimiento de voz que convierte lo que el
+            árbitro dice en una cadena de texto. Tu reto actual es convertir ese
+            texto en un par de números que representen el marcador actual.
+          </p>
+          <h3>Requerimiento</h3>
+          <p>
+            Escribe una función `obtenerMarcador` que recibe un texto y retorna
+            un arreglo con dos números que representa el marcador del juego.
+          </p>
+          <ul class="list">
+            <li>La puntuación de ambos equipos tendrá un rango de 0-9.</li>
+            <li>
+              El árbitro puede decir la puntuación de diversas maneras, por
+              ejemplo:
+            </li>
+          </ul>
+          <code>
+            <pre>
+obtenerMarcador("El marcador es cuatro cero") // [4, 0]
+obtenerMarcador("nuevo marcador: dos tres") // [2, 3]
+obtenerMarcador("dos dos") // [2, 2]
+obtenerMarcador("Arsenal acaba de recibir otro gol, dos cero") // [2, 0]</pre
+            >
+          </code>
+          <p>
+            El valor de retorno de la función siempre debe ser un array de dos
+            números. Si no hay números en el texto de entrada se asume que el
+            marcador es 0 a 0.
+          </p>
+          <h3>Respuesta</h3>
+          <code>
+            <pre>
+function obtenerMarcador(texto) {
+  const numeros = {
+    cero: 0,
+    uno: 1,
+    dos: 2,
+    tres: 3,
+    cuatro: 4,
+    cinco: 5,
+    seis: 6,
+    siete: 7,
+    ocho: 8,
+    nueve: 9,
+  };
+
+  const palabras = texto.split(/\s+/);
+  let marcador = [];
+
+  for (const palabra of palabras) {
+    if (palabra in numeros) {
+      marcador.push(numeros[palabra]);
+      if (marcador.length === 2) {
+        break; 
+      }
+    }
+  }
+  return marcador.length === 2 ? marcador : [0, 0];
+}</pre
+            >
+          </code>
+
+          <h2>Clase `Barco`</h2>
+          <h3>Descripción</h3>
+          <p>
+            Eres el astuto líder de una ágil tripulación pirata, siempre en
+            busca de valiosos tesoros. Como todo pirata versado en tecnología,
+            planeas utilizar la Programación Orientada a Objetos (OOP) para
+            crear un sistema que ayude a identificar barcos cargados con tesoro.
+          </p>
+          <p>
+            En estos tiempos modernos, la gente pesa bastante y esto suma al
+            peso del barco. ¿Cómo puedes asegurarte de que el barco que eliges
+            esté lleno de oro y no solo cargado con una tripulación pesada?
+          </p>
+          <h3>Requerimiento</h3>
+          <p>
+            Tu tarea es crear una clase llamada `Barco`. Esta clase debe tener
+            un constructor con dos parámetros:
+          </p>
+          <ul class="list">
+            <li class="bold">
+              calado:<span>
+                Una estimación del peso total del barco basado en cuán bajo se
+                encuentra en el agua.</span
+              >
+            </li>
+            <li class="bold">
+              tripulación:<span>
+                El número de miembros de la tripulación a bordo del barco.</span
+              >
+            </li>
+          </ul>
+          <p>
+            Adicionalmente, la clase debe tener un método llamado `valeLaPena`.
+            Este método debe retornar `true` o `false` según si el barco vale la
+            pena ser saqueado o no.
+          </p>
+          <ul class="list">
+            <li>
+              Cada miembro de la tripulación suma 1.5 unidades al calado del
+              barco.
+            </li>
+            <li>
+              Si el calado sigue siendo más de 20 unidades después de
+              contabilizar el peso de la tripulación, ¡entonces el barco vale la
+              pena ser saqueado!
+            </li>
+          </ul>
+          <code>
+            <pre>
+const perlaNegra = new Barco(32, 5);
+perlaNegra.valeLaPena();  // Debería retornar true
+
+const titanic = new Barco(15, 10);
+titanic.valeLaPena();  // Debería retornar false</pre
+            >
+          </code>
+          <h3>Respuesta</h3>
+          <code>
+            <pre>
+class Barco {
+  constructor(calado, tripulacion) {
+    this.calado = calado;
+    this.tripulacion = tripulacion;
+  }
+  valeLaPena() {
+    const nuevoCalado = this.calado - this.tripulacion * 1.5;
+    return nuevoCalado > 20;
+  }
+}</pre
+            >
+          </code>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

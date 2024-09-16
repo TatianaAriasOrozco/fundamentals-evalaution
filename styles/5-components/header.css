@@ -1,0 +1,25 @@
+.header {
+  padding: var(--spacing-4, 16px) 0px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  margin-right: 1rem;
+}
+
+.header__name {
+  color: var(--muted-foreground, #525252);
+  font-weight: 600;
+  line-height: var(--leading-6);
+
+  margin-left: auto;
+}
